@@ -125,9 +125,8 @@
 
 	</div>
 
-
 	<div id="capture_modal" class="modal fade align-self-center show" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+		<div class="modal-dialog modal-centered" role="document">
 			<div class="modal-content modal-overflow">
 				<div class="modal-body">
 					<video id="player" class="border mt-3" width="100%" height="100%" autoplay ></video>

@@ -45,10 +45,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <p class="display-1 font-weight-bold mb-5">
                                     404
                                 </p>
-                                <div id="back_to_dashboard">
-                                    <a href="<?php echo BASE_URL; ?>" class="btn btn-primary btn-lg btn-shadow">GO BACK TO DASHBOARD</a>
-                                </div>
-                                
                             </div>
 
                         </div>
