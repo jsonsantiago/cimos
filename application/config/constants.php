@@ -4,9 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 define('BASE_URL', 'http://localhost/');
 define('ASSETS_URL', BASE_URL.'assets/');
 define('UPLOAD_URL', BASE_URL.'upload_files/');
-define('SPL_URL', BASE_URL.'spl/');
-define('STRIPE_PAY_LINK', 'https://www.stripe.com');
-define('PAYPAL_PAY_LINK', 'https://www.paypal.com');
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace
