@@ -30,6 +30,11 @@
 	<script src="<?php echo ASSETS_URL; ?>js/vendor/bootstrap.bundle.min.js"></script>
 	<script src="<?php echo ASSETS_URL; ?>js/dore.script.js"></script>
 
+      <!-- Sweet Alert -->
+    <script src="<?php echo ASSETS_URL; ?>css/dist/sweetalert.min.js"></script>
+    <script src="<?php echo ASSETS_URL; ?>css/dist/sweetalert2.all.min.js"></script>
+
+
 	<style type="text/css">
 
 	</style>
@@ -51,48 +56,202 @@
 			Take Photo
 		</label>
 
-		<div class="form-group col-md-6">
-			<label for="inputEmail4">Lead ID #</label>
-			<input type="text" class="form-control" id="lead_id" name="lead_id">
+        <form id="cimos_add">
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Lead ID #</label>
+                <input type="text" class="form-control" id="lead_id" name="lead_id" required>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Temperature</label>
+                <input type="text" class="form-control" id="temperature" name="temperature" required>
+            </div>
+            <input type="hidden" class="form-control" id="latitude" name="latitude">
+            <input type="hidden" class="form-control" id="longitude" name="longitude">
+
+            <h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
+            <div class="form-group mb-2 col-sm-12" >
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
+                    <label class="custom-control-label " for="normal_temp"> I do not have above normal temperature</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_cough" id="no_cough">
+                    <label class="custom-control-label " for="no_cough"> I do not have a continuous cough</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_sense" id="no_sense">
+                    <label class="custom-control-label " for="no_sense"> I have no loss/change to my sense of taste or smell</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms" >
+                    <label class="custom-control-label " for="no_symptoms"> I have no other symptoms</label>
+                </div>
 		</div>
+   
 
-		<div class="form-group col-md-6">
-			<label for="inputEmail4">Temperature</label>
-			<input type="text" class="form-control" id="temperature" name="temperature">
-		</div>
+		<button type="submit" class="btn btn-success mb-4 mt-3 col-12">Submit</button>
+        </form>
 
-		<h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
-		<div class="form-group mb-2 col-sm-12" >
-			<div class="custom-control custom-checkbox mb-2 ">
-				<input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
-				<label class="custom-control-label " for="normal_temp"> I do not have above normal temperature</label>
-			</div>
 
-			<div class="custom-control custom-checkbox mb-2 ">
-				<input type="checkbox" class="custom-control-input" name="no_cough" id="no_cough">
-				<label class="custom-control-label " for="no_cough"> I do not have a continuous cough</label>
-			</div>
-
-			<div class="custom-control custom-checkbox mb-2 ">
-				<input type="checkbox" class="custom-control-input" name="no_sense" id="no_sense">
-				<label class="custom-control-label " for="no_sense"> I have no loss/change to my sense of taste or smell</label>
-			</div>
-
-			<div class="custom-control custom-checkbox mb-2 ">
-				<input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms">
-				<label class="custom-control-label " for="no_symptoms"> I have no other symptoms</label>
-			</div>
-		</div>
-
-		<button type="submit" class="btn btn-success mb-4 mt-3">Submit</button>
 	</div>
 	</main>
 
 	<script type="text/javascript">
 
 	$(document).ready(function(){
+        getLocation();
+
+        $("#cimos_add").submit(function(event){
+            event.preventDefault();
+            if($("#normal_temp").prop("checked") == true){
+                $("#normal_temp").val(1);
+            }
+            else if($("#normal_temp").prop("checked") == false){
+                $("#normal_temp").val(0);
+            }
+
+            if($("#no_cough").prop("checked") == true){
+                $("#no_cough").val(1);
+            }
+            else if($("#no_cough").prop("checked") == false){
+                $("#no_cough").val(0);
+            }
+
+            if($("#no_sense").prop("checked") == true){
+                $("#no_sense").val(1);
+            }
+            else if($("#no_sense").prop("checked") == false){
+                $("#no_sense").val(0);
+            }
+
+            if($("#no_symptoms").prop("checked") == true){
+                $("#no_symptoms").val(1);
+            }
+            else if($("#no_symptoms").prop("checked") == false){
+                $("#no_symptoms").val(0);
+            }
+
+            cimos_data = $(this).serializeArray();
+            save_covid_statement(cimos_data);
+        });
 
 	});
+
+    function save_covid_statement(data)
+    {
+        swal({
+        title: 'Warning',
+        html: "Are you sure you want to continue?",
+        showCancelButton: true,
+        confirmButtonColor: '#28A745',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Proceed',
+        allowOutsideClick: false,
+        width: '400px',
+        }).then((result) => {
+        if (result.value) {
+
+            $.ajax({
+                url: "<?php echo BASE_URL; ?>Cimos/save_covid_statement",
+                method: "POST",
+                dataType: 'json',
+                data: data,
+                success:function(response)
+                {
+                    if(response.success)
+                    {
+                        swal({
+                            title:"Success",
+                            text: "Successfully Added covid statement",
+                            type: "success",
+                            confirmButtonColor: '#28A745',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
+                        }).then(function() {
+                            window.location.href = "<?php echo BASE_URL; ?>";
+                        });
+                    }
+                   
+                    
+                }
+            });
+
+        }
+    });
+    }
+
+    function getLocation() 
+    {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else { 
+            swal({
+                    title:"Warning",
+                    text: "Geolocation is not supported by this browser.",
+                    type: "warning",
+                    confirmButtonColor: '#28A745',
+                    confirmButtonText: 'Ok',
+                    allowOutsideClick: false
+                });
+        }
+    }
+
+    function showPosition(position) 
+    {
+        $("#longitude").val(position.coords.longitude);
+        $("#latitude").val(position.coords.latitude);
+    }
+
+    function showError(error) 
+    {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                swal({
+                    title:"Warning",
+                    text: "User denied the request for Geolocation.",
+                    type: "warning",
+                    confirmButtonColor: '#28A745',
+                    confirmButtonText: 'Ok',
+                    allowOutsideClick: false
+                });
+            break;
+            case error.POSITION_UNAVAILABLE:
+                swal({
+                        title:"Warning",
+                        text: "Location information is unavailable.",
+                        type: "warning",
+                        confirmButtonColor: '#28A745',
+                        confirmButtonText: 'Ok',
+                        allowOutsideClick: false
+                    });
+            break;
+            case error.TIMEOUT:
+                swal({
+                    title:"Warning",
+                    text: "The request to get user location timed out.",
+                    type: "warning",
+                    confirmButtonColor: '#28A745',
+                    confirmButtonText: 'Ok',
+                    allowOutsideClick: false
+                });
+            
+            break;
+            case error.UNKNOWN_ERROR:
+                swal({
+                        title:"Warning",
+                        text: "An unknown error occurred.",
+                        type: "warning",
+                        confirmButtonColor: '#28A745',
+                        confirmButtonText: 'Ok',
+                        allowOutsideClick: false
+                    });
+            break;
+        }
+    }
 
 	</script>
 
