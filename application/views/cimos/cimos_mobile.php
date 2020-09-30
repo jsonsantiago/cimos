@@ -36,13 +36,26 @@
 
 
 	<style type="text/css">
-
+         .navbar {
+            height: 120px;
+        }
+        .app-logo img{
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: -1;
+            margin-top: -3%;
+            height: 66px;
+        }
 	</style>
 </head>
 
-<body id="app-container" class="menu-hidden" >
+<body id="app-container" class="menu-hidden" company_id="<?php echo $company_id; ?>">
 	<nav class="navbar fixed-top">
 		<a class="app-logo" href="#">
+            <img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
 		</a>
 	</nav>
 
@@ -104,7 +117,6 @@
 
 	$(document).ready(function(){
         getLocation();
-
         $("#cimos_add").submit(function(event){
             event.preventDefault();
             if($("#normal_temp").prop("checked") == true){

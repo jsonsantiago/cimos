@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-side">
                             <div class="text-center">
                                 <a href="<?php echo BASE_URL; ?>">
-                                    <img src="<?php echo ASSETS_URL; ?>img/softplay_logo.png" class="img-fluid mb-4">
+                                    <!-- <img src="<?php echo ASSETS_URL; ?>img/softplay_logo.png" class="img-fluid mb-4"> -->
                                 </a>
                                 <h6 class="mb-4"><?php echo $message; ?></h6>
                                 <p class="mb-0 text-muted text-small mb-0">Error code</p>
