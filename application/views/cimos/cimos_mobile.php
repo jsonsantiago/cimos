@@ -49,6 +49,17 @@
             margin-top: -3%;
             height: 66px;
         }
+		canvas {
+			background-image: ;
+		}
+		video {
+		}
+		.modal-dialog {
+			height: 100%;
+		}
+		.modal-content {
+			height: auto;
+		}
 	</style>
 </head>
 
@@ -61,13 +72,11 @@
 
 	<main>
 	<div class="col-12 mt-3 mb-3 card "> 
-		<div class="position-relative">
-			<img src="<?php echo ASSETS_URL; ?>img/default_img.png" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
-		</div>
-		<label class="btn btn-primary col-12 mb-3" for="file" title="Upload file">
-			<input type="file" class="sr-only" id="file" name="file" accept=".jpg, .jpeg,.png">
-			Take Photo
-		</label>
+		<canvas id="canvas" class="border mt-3" width=320 height=320>
+
+		</canvas>
+
+		<button type="button" class="btn btn-info mb-4 mt-3" id="take_photo"><i class="simple-icon-camera mr-2 "></i>Take Photo</button>
 
         <form id="cimos_add">
             <div class="form-group col-md-6">
@@ -110,6 +119,20 @@
         </form>
 
 
+	</div>
+
+
+	<div id="capture_modal" class="modal fade align-self-center show" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content modal-overflow">
+				<div class="modal-body">
+					<video id="player" class="border mt-3" width="100%" height="100%" autoplay ></video>
+
+					<button type="button" class="btn col-12 btn-info mx-auto d-block" id="capture">Capture</button>
+					<button type="button" class="btn col-12 btn-dark mx-auto d-block mt-2" data-dismiss="modal" id="cancel">Cancel</button>
+				</div>  
+			</div>
+		</div>
 	</div>
 	</main>
 
@@ -301,6 +324,47 @@
             return o.value.lastIndexOf(r.text)
         } else return o.selectionStart
     }
+
+    //** PHOTO CAPTURING RELATED CODES **//
+	const player = document.getElementById('player');
+	const canvas = document.getElementById('canvas');
+	const context = canvas.getContext('2d');
+	const captureButton = document.getElementById('capture');
+
+	const constraints = {
+		video: true,
+	};
+
+	captureButton.addEventListener('click', () => {
+		context.drawImage(player, 0, 0, canvas.width, canvas.height);
+		stopCamera(player);
+		$('#capture_modal').modal('hide');
+	});
+
+	$('#take_photo').click(function() {
+		$('#capture_modal').modal('show');
+		navigator.mediaDevices.getUserMedia(constraints)
+			.then((stream) => {
+				player.srcObject = stream;
+			});
+	});
+
+	$('#cancel').click(function() {
+		stopCamera(player);
+	});
+
+	function stopCamera(videoElem) {
+		if(videoElem.srcObject){	
+			const stream = videoElem.srcObject;
+			const tracks = stream.getTracks();
+
+			tracks.forEach(function(track) {
+				track.stop();
+			});
+
+			videoElem.srcObject = null;
+		}
+	}
 
 	</script>
 
