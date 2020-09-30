@@ -36,21 +36,26 @@
 
 
 	<style type="text/css">
-         .navbar {
-            height: 120px;
+        .navbar {
+            height: 80px;
+            padding-top: 0;
         }
         .app-logo img{
             position: absolute;
             margin: 0 auto;
+            margin-top: 20px;
+            top:0;
             left: 0;
             right: 0;
             text-align: center;
             z-index: -1;
-            margin-top: -3%;
-            height: 66px;
+            height: 40px;
         }
 		canvas {
-			background-image: ;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-image: url("../../../assets/img/default_img.png");
 		}
 		video {
 		}
@@ -64,14 +69,13 @@
 </head>
 
 <body id="app-container" class="menu-hidden" company_id="<?php echo $company_id; ?>">
-	<nav class="navbar fixed-top">
-		<a class="app-logo" href="#">
+    <nav class="navbar fixed-top">
+        <a class="app-logo" href="#">
             <img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
-		</a>
-	</nav>
-
-	<main>
-	<div class="col-12 mt-3 mb-3 card "> 
+        </a>
+    </nav>
+    <main>
+	<div class="col-12 mt-3 mb-3 card ">
 		<canvas id="canvas" class="border mt-3" width=320 height=320>
 
 		</canvas>
