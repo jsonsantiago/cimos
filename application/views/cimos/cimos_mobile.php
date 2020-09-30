@@ -215,7 +215,7 @@
 
             cimos_data = $(this).serializeArray();
             if(photo_taken){
-            	cimos_data.push({name: 'photo', value: canvas.toDataURL()});
+            	cimos_data.push({name: 'photo_raw', value: canvas.toDataURL()});
             }
             save_covid_statement(cimos_data);
         });
