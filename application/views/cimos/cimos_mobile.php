@@ -124,6 +124,49 @@
 
 	<script type="text/javascript">
 
+    //** PHOTO CAPTURING RELATED CODES **//
+    var photo_taken = false;
+	const player = document.getElementById('player');
+	const canvas = document.getElementById('canvas');
+	const context = canvas.getContext('2d');
+	const captureButton = document.getElementById('capture');
+
+	const constraints = {
+		video: true,
+	};
+
+	captureButton.addEventListener('click', () => {
+		photo_taken = true;
+		context.drawImage(player, 0, 0, canvas.width, canvas.height);
+		stopCamera(player);
+		$('#capture_modal').modal('hide');
+	});
+
+	$('#take_photo').click(function() {
+		$('#capture_modal').modal('show');
+		navigator.mediaDevices.getUserMedia(constraints)
+			.then((stream) => {
+				player.srcObject = stream;
+			});
+	});
+
+	$('#cancel').click(function() {
+		stopCamera(player);
+	});
+
+	function stopCamera(videoElem) {
+		if(videoElem.srcObject){	
+			const stream = videoElem.srcObject;
+			const tracks = stream.getTracks();
+
+			tracks.forEach(function(track) {
+				track.stop();
+			});
+
+			videoElem.srcObject = null;
+		}
+	}
+
 	$(document).ready(function(){
         getLocation();
 
@@ -158,6 +201,9 @@
             }
 
             cimos_data = $(this).serializeArray();
+            if(photo_taken){
+            	cimos_data.push({name: 'photo', value: canvas.toDataURL()});
+            }
             save_covid_statement(cimos_data);
         });
 
@@ -311,47 +357,6 @@
             return o.value.lastIndexOf(r.text)
         } else return o.selectionStart
     }
-
-    //** PHOTO CAPTURING RELATED CODES **//
-	const player = document.getElementById('player');
-	const canvas = document.getElementById('canvas');
-	const context = canvas.getContext('2d');
-	const captureButton = document.getElementById('capture');
-
-	const constraints = {
-		video: true,
-	};
-
-	captureButton.addEventListener('click', () => {
-		context.drawImage(player, 0, 0, canvas.width, canvas.height);
-		stopCamera(player);
-		$('#capture_modal').modal('hide');
-	});
-
-	$('#take_photo').click(function() {
-		$('#capture_modal').modal('show');
-		navigator.mediaDevices.getUserMedia(constraints)
-			.then((stream) => {
-				player.srcObject = stream;
-			});
-	});
-
-	$('#cancel').click(function() {
-		stopCamera(player);
-	});
-
-	function stopCamera(videoElem) {
-		if(videoElem.srcObject){	
-			const stream = videoElem.srcObject;
-			const tracks = stream.getTracks();
-
-			tracks.forEach(function(track) {
-				track.stop();
-			});
-
-			videoElem.srcObject = null;
-		}
-	}
 
 	</script>
 
