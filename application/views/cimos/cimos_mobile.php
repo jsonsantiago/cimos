@@ -64,7 +64,7 @@
 
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Temperature</label>
-                <input type="text" class="form-control" id="temperature" name="temperature" required>
+                <input type="text" class="form-control" id="temperature" name="temperature" onkeypress="return isNumberKey(this, event);" required>
             </div>
             <input type="hidden" class="form-control" id="latitude" name="latitude">
             <input type="hidden" class="form-control" id="longitude" name="longitude">
@@ -146,6 +146,7 @@
         swal({
         title: 'Warning',
         html: "Are you sure you want to continue?",
+        type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#28A745',
         cancelButtonColor: '#d33',
@@ -166,7 +167,7 @@
                     {
                         swal({
                             title:"Success",
-                            text: "Successfully Added covid statement",
+                            text: "Thank You – your declaration has been logged",
                             type: "success",
                             confirmButtonColor: '#28A745',
                             confirmButtonText: 'Ok',
@@ -251,6 +252,42 @@
                     });
             break;
         }
+    }
+
+    function isNumberKey(txt, evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        var number = txt.value.split('.');
+        if (charCode == 46) {
+            //Check if the text already contains the . character
+            if (txt.value.indexOf('.') === -1) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            if (charCode > 31 &&
+                (charCode < 48 || charCode > 57))
+            return false;
+        }
+
+        //get the carat position
+        var caratPos = getSelectionStart(txt);
+        var dotPos = txt.value.indexOf(".");
+        if( caratPos > dotPos && dotPos>-1 && (number[1].length > 1)){
+            return false;
+        }
+
+        return true;
+    }
+
+    
+    function getSelectionStart(o) {
+        if (o.createTextRange) {
+            var r = document.selection.createRange().duplicate()
+            r.moveEnd('character', o.value.length)
+            if (r.text == '') return o.value.length
+            return o.value.lastIndexOf(r.text)
+        } else return o.selectionStart
     }
 
 	</script>
