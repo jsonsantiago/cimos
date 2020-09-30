@@ -50,11 +50,9 @@
             background: #D5711F;
             opacity:0.8 !important;
         }
-        .navbar {
-            height: 120px;
-        }
-        .softplay-logo img{
-            height: 100px;
+   
+        .navbar-logo img{
+            height: 75px;
         }
         @media (max-height: 600px) {
 
@@ -67,23 +65,23 @@
             }
         }
 
+     
         
     </style>
 
 
 </head>
 
-<body id="app-container"  class="menu-hidden">
+<body id="app-container"  class="menu-hidden" >
     <nav class="navbar fixed-top">
-        <a class="softplay-logo " href="#">
+        <a class="navbar-logo" href="#">
              <!-- <img class="img-fluid center" src="<?php echo UPLOAD_URL.'logo.jpg' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'"> -->
         </a>
     </nav>
     <main>
-        <div class="container-fluid disable-text-selection">
-        
 
-            <div class="col-4 mt-3 mb-3 card "> 
+
+            <div class="col-12 mt-3 mb-3 card "> 
                 <div class="position-relative">
                     <img src="<?php echo  UPLOAD_URL.'default_img.png' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
                 </div>
@@ -123,8 +121,6 @@
                 <button type="submit" class="btn btn-success mb-3">Save Changes</button>
             </div>
             
-
-        </div>
     </main>
 
 
