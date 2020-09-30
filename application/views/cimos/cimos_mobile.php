@@ -228,8 +228,8 @@
     function save_covid_statement(data)
     {
         swal({
-        title: 'Warning',
-        html: "Are you sure you want to continue?",
+        title: 'Confirmation',
+        html: "Are you sure you want to proceed?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#28A745',
@@ -248,12 +248,12 @@
                 success:function(response)
                 {
                     swal({
-                            title:"Success",
-                            text: "Thank You – your declaration has been logged",
-                            type: "success",
-                            confirmButtonColor: '#28A745',
-                            confirmButtonText: 'Ok',
-                            allowOutsideClick: false,
+                        title:"Success",
+                        text: "Thank You – your declaration has been logged",
+                        type: "success",
+                        confirmButtonColor: '#28A745',
+                        confirmButtonText: 'Ok',
+                        allowOutsideClick: false,
                     }).then(function() {
                         window.location.href = "<?php echo BASE_URL; ?>Covid/" +$("body").attr('company_id');
                     });
