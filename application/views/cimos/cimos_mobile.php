@@ -81,7 +81,7 @@
         <form id="cimos_add">
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Lead ID #</label>
-                <input type="text" class="form-control" id="lead_id" name="lead_id" required>
+                <input type="text" class="form-control" id="lead_id" name="lead_id" onkeypress="return isNumberKey(this, event);" required>
             </div>
 
             <div class="form-group col-md-6">
