@@ -1,0 +1,68 @@
+
+
+ul.pagination li.previous > a, ul.pagination li.next> a {
+    padding-left: 15px !important; 
+    padding-right: 15px !important;
+    
+  }
+
+.ctbtn {
+  margin-right: 3px !important;
+
+}
+
+textarea.txtmrgn {
+  margin-left: 1.4% !important;
+  width: 104% !important;
+}
+
+.margn-will-cover {
+  margin-left: 6% !important;
+}
+
+button.btn.btn-sm.btn-primary.mb-1.collapsed {
+  padding-left: 1% !important;
+  padding-right: 1% !important;
+}
+
+img.img_hdr {
+  height: 70% !important;
+  width: 26% !important;
+  padding-left: 2% !important;
+}
+
+h6#status {
+  margin-top: 1.1% !important;
+  margin-right: 1% !important;
+}
+
+.SPLAddressListSt {
+  width: 100% !important;
+  margin-top: 1% !important;
+  margin-bottom: 1% !important;
+  border-style: outset !important;
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+}
+
+option:hover {
+  background-color: #e0eaed !important;
+}
+
+option {
+  margin-top: 0.1% !important;
+  margin-left: 1% !important;
+}
+
+div#about_partner {
+  width: 100% !important;
+}
+
+div#wccstm_css {
+  margin-left: 1.5% !important;
+  margin-right: -3.2% !important;
+}
+
+.form-check.form-check-inline.cstmm {
+  margin-left: 4% !important;
+}

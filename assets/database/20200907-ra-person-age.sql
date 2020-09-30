@@ -1,0 +1,2 @@
+ALTER TABLE `person`
+	ADD COLUMN `age` VARCHAR(50) NULL DEFAULT NULL AFTER `postcode`;

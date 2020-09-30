@@ -1,0 +1,6 @@
+ALTER TABLE `site`
+	ADD COLUMN `free_twin` TINYINT NOT NULL DEFAULT '0' AFTER `adult_price`
+	ADD COLUMN `free_infant` TINYINT NOT NULL DEFAULT '0' AFTER `free_twin`;
+
+ALTER TABLE `person`
+	ADD COLUMN `have_twin` TINYINT NULL DEFAULT '0' AFTER `age`;

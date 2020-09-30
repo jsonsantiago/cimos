@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond $1 !^(index\.php|assets|img|font|js|css|favicon.png|upload_files|spl)
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteRule ^(.*)$ ./index.php/$1 [L,QSA]
+
+php_value max_input_vars 10000

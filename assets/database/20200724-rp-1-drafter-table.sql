@@ -1,0 +1,13 @@
+CREATE TABLE `drafter` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`recommendations` TEXT NULL DEFAULT NULL,
+	`notes` TEXT NULL DEFAULT NULL,
+	`drafter_id` INT(11) NULL DEFAULT NULL,
+	`lead_id` INT(11) NULL DEFAULT NULL,
+	`file_url` TEXT NULL DEFAULT NULL,
+	`date` TIMESTAMP NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+;

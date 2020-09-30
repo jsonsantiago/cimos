@@ -1,0 +1,28 @@
+/**
+*
+* This file is for the instruction on how to handle new database changes on
+* table and additional needed data to be inserted.
+*
+* This is needed so that future devs can have a copy of all database changes
+* that has been made during the development of the system.
+*
+*
+* DETAILS/INSTRUCTION: 
+*
+* File Format : yyyymmdd-devinitials-short-description-of-the-sql-script.sql
+* Example     : 20200707-js-5-user-date-added-column.sql
+*
+*        5 = no of .sql you have added today
+* 20200707 = Format: yyyymmdd | Date of the sql, date will help to sort out the sql files in /database
+* js       = Jayson Santiago, initials of the developer who made the database change/s
+* user-date-added-column = Short description of the change/s
+*
+* SQL file content sample:
+* 		ALTER TABLE `user`
+*	ADD COLUMN `date_added` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP() AFTER `password`;
+*
+* !Important: SQL Script file must be created on every changes made to database structure/fixed data to be added
+* !Important: SQL Script file must be push to repository
+* !Important: New SQL Script file pulled from repository must be imported/run to local database of the developer
+*
+*/

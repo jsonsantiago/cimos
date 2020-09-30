@@ -1,0 +1,2 @@
+ALTER TABLE `site`
+	ADD COLUMN `sessioncapacity` INT NULL DEFAULT NULL;
