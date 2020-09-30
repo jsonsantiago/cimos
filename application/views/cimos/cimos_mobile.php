@@ -51,9 +51,7 @@
             opacity:0.8 !important;
         }
    
-        .navbar-logo img{
-            height: 75px;
-        }
+      
         @media (max-height: 600px) {
 
             #client_modal .modal-dialog {
@@ -64,8 +62,6 @@
                 overflow-y: auto;
             }
         }
-
-     
         
     </style>
 
@@ -75,52 +71,51 @@
 <body id="app-container"  class="menu-hidden" >
     <nav class="navbar fixed-top">
         <a class="navbar-logo" href="#">
-             <!-- <img class="img-fluid center" src="<?php echo UPLOAD_URL.'logo.jpg' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'"> -->
+             <img class="img-fluid center" src="<?php echo UPLOAD_URL.'logo.jpg' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
         </a>
     </nav>
     <main>
 
-
-            <div class="col-12 mt-3 mb-3 card "> 
-                <div class="position-relative">
-                    <img src="<?php echo  UPLOAD_URL.'default_img.png' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
-                </div>
-                <label class="btn btn-primary col-12 mb-3" for="file" title="Upload file">
-                    <input type="file" class="sr-only" id="file" name="file" accept=".jpg, .jpeg,.png">
-                    Take Photo
-                </label>
-
-                <div class="input-group mb-3 mt-2">
-                    <label class="col-sm-3 col-form-label">Temperature </label>
-                    <input type="text" id="temperature" name="temperature" type="text" class="form-control" >
-                </div>
-
-                <h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
-                <div class="form-group mb-2 col-sm-12" >
-                    <div class="custom-control custom-checkbox mb-2 ">
-                        <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
-                        <label class="custom-control-label " for="customCheck1"> I do not have above normal temperature</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox mb-2 ">
-                        <input type="checkbox" class="custom-control-input" name="no_cough" id="no_cough">
-                        <label class="custom-control-label " for="customCheck1"> I do not have a continuous cough</label>
-                    </div>
-
-                    <div class="custom-control custom-checkbox mb-2 ">
-                        <input type="checkbox" class="custom-control-input" name="no_sense" id="no_sense">
-                        <label class="custom-control-label " for="customCheck1"> I have no loss/change to my sense of taste or smell</label>
-                    </div>
-                    
-                    <div class="custom-control custom-checkbox mb-2 ">
-                        <input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms">
-                        <label class="custom-control-label " for="customCheck1"> I have no other symptoms</label>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-success mb-3">Save Changes</button>
+        <div class="col-12 mt-3 mb-3 card "> 
+            <div class="position-relative">
+                <img src="<?php echo  UPLOAD_URL.'default_img.png' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
             </div>
-            
+            <label class="btn btn-primary col-12 mb-3" for="file" title="Upload file">
+                <input type="file" class="sr-only" id="file" name="file" accept=".jpg, .jpeg,.png">
+                Take Photo
+            </label>
+
+            <div class="input-group mb-3 mt-2">
+                <label class="col-sm-1 col-form-label">Temperature </label>
+                <input type="text" id="temperature" name="temperature" type="text" class="form-control" >
+            </div>
+
+            <h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
+            <div class="form-group mb-2 col-sm-12" >
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
+                    <label class="custom-control-label " for="customCheck1"> I do not have above normal temperature</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_cough" id="no_cough">
+                    <label class="custom-control-label " for="customCheck1"> I do not have a continuous cough</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_sense" id="no_sense">
+                    <label class="custom-control-label " for="customCheck1"> I have no loss/change to my sense of taste or smell</label>
+                </div>
+                
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms">
+                    <label class="custom-control-label " for="customCheck1"> I have no other symptoms</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success mb-3">Save Changes</button>
+        </div>
+        
     </main>
 
 
