@@ -129,7 +129,7 @@
 		<div class="modal-dialog modal-centered" role="document">
 			<div class="modal-content modal-overflow">
 				<div class="modal-body">
-					<video id="player" class="border mt-3" width="100%" height="100%" autoplay ></video>
+					<video id="player" class="border mt-3" width="100%" autoplay ></video>
 
 					<button type="button" class="btn col-12 btn-info mx-auto d-block" id="capture">Capture</button>
 					<button type="button" class="btn col-12 btn-dark mx-auto d-block mt-2" data-dismiss="modal" id="cancel">Cancel</button>
