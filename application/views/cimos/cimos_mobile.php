@@ -192,26 +192,23 @@
         if (result.value) {
 
             $.ajax({
-                url: "<?php echo BASE_URL; ?>Covid/save_covid_statement",
+                url: "<?php echo BASE_URL; ?>Covid_declaration/save_covid_statement",
                 method: "POST",
                 dataType: 'json',
                 data: data,
                 success:function(response)
                 {
-                    if(response.success)
-                    {
-                        swal({
+
+                    swal({
                             title:"Success",
                             text: "Thank You – your declaration has been logged",
                             type: "success",
                             confirmButtonColor: '#28A745',
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
-                        }).then(function() {
-                            window.location.href = "<?php echo BASE_URL.'Covid_declaration/1'; ?>";
-                        });
-                    }
-                   
+                    }).then(function() {
+                        window.location.href = "<?php echo BASE_URL; ?>Covid/" +$("body").attr('company_id');
+                    });
                     
                 }
             });
