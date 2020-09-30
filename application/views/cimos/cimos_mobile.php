@@ -192,7 +192,7 @@
         if (result.value) {
 
             $.ajax({
-                url: "<?php echo BASE_URL; ?>Cimos/save_covid_statement",
+                url: "<?php echo BASE_URL; ?>Covid/save_covid_statement",
                 method: "POST",
                 dataType: 'json',
                 data: data,
@@ -208,7 +208,7 @@
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
                         }).then(function() {
-                            window.location.href = "<?php echo BASE_URL; ?>";
+                            window.location.href = "<?php echo BASE_URL.'Covid_declaration/1'; ?>";
                         });
                     }
                    
