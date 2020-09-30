@@ -83,7 +83,7 @@
 
             <div class="col-12 mt-3 mb-3 card "> 
                 <div class="position-relative">
-                    <img src="<?php echo  UPLOAD_URL.'default_img.png' ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
+                    <img src="<?php echo ASSETS_URL; ?>img/default_img.png" alt="Centre Logo" class="img-thumbnail mx-auto d-block m-3" style="height: 150px">
                 </div>
                 <label class="btn btn-primary col-12 mb-3" for="file" title="Upload file">
                     <input type="file" class="sr-only" id="file" name="file" accept=".jpg, .jpeg,.png">
