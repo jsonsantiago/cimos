@@ -237,6 +237,7 @@
         }).then((result) => {
         if (result.value) {
 
+            console.log(data);
             $.ajax({
                 url: "<?php echo BASE_URL; ?>Covid_declaration/save_covid_statement",
                 method: "POST",

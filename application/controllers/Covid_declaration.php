@@ -24,8 +24,9 @@ class Covid_declaration extends CI_Controller {
 			$photo     = str_replace(' ', '+', $photo);
 			$photo_raw = base64_decode($photo);
 			$file_name = uniqid(). '.png';
-			$file = UPLOAD_URL.'covid/'. $file_name;
-			file_put_contents($file, $photo_raw);
+
+			$upload_file_path = APPPATH . '../upload_files/covid/'. $file_name;
+			file_put_contents($upload_file_path, $photo_raw);
 		}
 
 		$data = array(
