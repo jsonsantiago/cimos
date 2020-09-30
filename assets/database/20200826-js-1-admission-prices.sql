@@ -1,3 +1,0 @@
-ALTER TABLE `site`
-	ADD COLUMN `adult_price` DECIMAL(10,2) NULL DEFAULT NULL AFTER `logo`,
-	ADD COLUMN `children_price` DECIMAL(10,2) NULL DEFAULT NULL AFTER `adult_price`;
