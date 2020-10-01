@@ -96,7 +96,7 @@
 
 	<div id="page-header" class="border-bottom shadow-sm p-3 mb-5 bg-white rounded">
 		<a class="app-logo" href="#">
-		<img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
+		<img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'images/ymd-logo.png' : ASSETS_URL.'images/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>images/default_logo.png'">
 		</a>
 	</div>
 
@@ -109,7 +109,7 @@
 
 					<div class="form-group col-centered">
 						<div class="col-6">
-							<img id="photo_preview" src="<?php echo  ASSETS_URL.'img/default_img.png' ?>" class="img-thumbnail">
+							<img id="photo_preview" src="<?php echo  ASSETS_URL.'images/default_img.png' ?>" class="img-thumbnail">
 						</div>
 						<label class="btn btn-info btn-upload col-12 col-centered" for="photo_file" title="Upload image file">
 							<input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
