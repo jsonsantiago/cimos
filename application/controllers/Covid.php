@@ -7,7 +7,7 @@ class Covid extends CI_Controller {
 		parent::__construct();
 
 		date_default_timezone_set('Europe/London');
-		$this->load->model('Cimos_model');
+		$this->load->model('Covid_model');
 	}
 
 	function _remap($comp_id) {
@@ -17,7 +17,7 @@ class Covid extends CI_Controller {
 	public function index($comp_id)
 	{
 		$data['company_id'] = $comp_id;
-		$this->load->view('cimos/cimos_mobile.php', $data);
+		$this->load->view('covid/cimos_mobile.php', $data);
 	}
 
 }

@@ -79,8 +79,9 @@
 		<canvas id="canvas" class="border mt-3" width=320 height=320>
 
 		</canvas>
-
-		<button type="button" class="btn btn-info mb-4 mt-3" id="take_photo"><i class="simple-icon-camera mr-2 "></i>Take Photo</button>
+        <label class="btn btn-info mb-4 mt-3 btn-upload" for="photo_file" title="Upload image file">
+            <input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
+        </label>
 
         <form id="cimos_add">
             <div class="form-group col-md-6">
@@ -88,10 +89,6 @@
                 <input type="text" class="form-control" id="lead_id" name="lead_id" onkeypress="return isNumberKey(this, event);" required>
             </div>
 
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Temperature</label>
-                <input type="text" class="form-control" id="temperature" name="temperature" onkeypress="return isNumberKey(this, event);" required>
-            </div>
             <input type="hidden" class="form-control" id="latitude" name="latitude">
             <input type="hidden" class="form-control" id="longitude" name="longitude">
 
@@ -99,23 +96,25 @@
             <div class="form-group mb-2 col-sm-12" >
                 <div class="custom-control custom-checkbox mb-2 ">
                     <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
-                    <label class="custom-control-label " for="normal_temp"> I do not have above normal temperature</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="no_cough" id="no_cough">
-                    <label class="custom-control-label " for="no_cough"> I do not have a continuous cough</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="no_sense" id="no_sense">
-                    <label class="custom-control-label " for="no_sense"> I have no loss/change to my sense of taste or smell</label>
+                    <label class="custom-control-label " for="normal_temp"> I confirm that I have taken my own temperature and that it is at or below…</label>
                 </div>
 
                 <div class="custom-control custom-checkbox mb-2 ">
                     <input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms" >
-                    <label class="custom-control-label " for="no_symptoms"> I have no other symptoms</label>
+                    <label class="custom-control-label " for="no_symptoms"> I can confirm that I am currently not experiencing any COVID symptoms, fever, cough, loss of smell or taste….</label>
                 </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="no_contact_with_positive" id="no_contact_with_positive">
+                    <label class="custom-control-label " for="no_contact_with_positive"> I can confirm that I have not been in contact with anyone who is currently suffering from those symptoms</label>
+                </div>
+
+                <div class="custom-control custom-checkbox mb-2 ">
+                    <input type="checkbox" class="custom-control-input" name="with_PPE" id="with_PPE">
+                    <label class="custom-control-label " for="with_PPE"> I confirm that I have the required PPE mask, hand sanitiser, my own water and that I will confirm to the client of our Covid 19 procedures upon arrival</label>
+                </div>
+
+               
 		</div>
    
 
@@ -125,64 +124,39 @@
 
 	</div>
 
-	<div id="capture_modal" class="modal fade align-self-center show" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
-		<div class="modal-dialog modal-centered" role="document">
+
+<!-- 	<div id="capture_modal" class="modal fade align-self-center show" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content modal-overflow">
 				<div class="modal-body">
-					<video id="player" class="border mt-3" width="100%" autoplay ></video>
+					<video id="player" class="border mt-3" width="100%" height="100%" autoplay ></video>
 
 					<button type="button" class="btn col-12 btn-info mx-auto d-block" id="capture">Capture</button>
 					<button type="button" class="btn col-12 btn-dark mx-auto d-block mt-2" data-dismiss="modal" id="cancel">Cancel</button>
 				</div>  
 			</div>
 		</div>
-	</div>
+	</div> -->
 	</main>
 
 	<script type="text/javascript">
 
     //** PHOTO CAPTURING RELATED CODES **//
-    var photo_taken = false;
-	const player = document.getElementById('player');
-	const canvas = document.getElementById('canvas');
-	const context = canvas.getContext('2d');
-	const captureButton = document.getElementById('capture');
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
-	const constraints = {
-		video: true,
-	};
-
-	captureButton.addEventListener('click', () => {
-		photo_taken = true;
-		context.drawImage(player, 0, 0, canvas.width, canvas.height);
-		stopCamera(player);
-		$('#capture_modal').modal('hide');
-	});
-
-	$('#take_photo').click(function() {
-		$('#capture_modal').modal('show');
-		navigator.mediaDevices.getUserMedia(constraints)
-			.then((stream) => {
-				player.srcObject = stream;
-			});
-	});
-
-	$('#cancel').click(function() {
-		stopCamera(player);
-	});
-
-	function stopCamera(videoElem) {
-		if(videoElem.srcObject){	
-			const stream = videoElem.srcObject;
-			const tracks = stream.getTracks();
-
-			tracks.forEach(function(track) {
-				track.stop();
-			});
-
-			videoElem.srcObject = null;
-		}
-	}
+    $("#photo_file").change(function(){
+        readURL(this);
+    });
 
 	$(document).ready(function(){
         getLocation();
@@ -195,18 +169,18 @@
                 $("#normal_temp").val(0);
             }
 
-            if($("#no_cough").prop("checked") == true){
-                $("#no_cough").val(1);
+            if($("#no_contact_with_positive").prop("checked") == true){
+                $("#no_contact_with_positive").val(1);
             }
-            else if($("#no_cough").prop("checked") == false){
-                $("#no_cough").val(0);
+            else if($("#no_contact_with_positive").prop("checked") == false){
+                $("#no_contact_with_positive").val(0);
             }
 
-            if($("#no_sense").prop("checked") == true){
-                $("#no_sense").val(1);
+            if($("#with_PPE").prop("checked") == true){
+                $("#with_PPE").val(1);
             }
-            else if($("#no_sense").prop("checked") == false){
-                $("#no_sense").val(0);
+            else if($("#with_PPE").prop("checked") == false){
+                $("#with_PPE").val(0);
             }
 
             if($("#no_symptoms").prop("checked") == true){
@@ -228,8 +202,8 @@
     function save_covid_statement(data)
     {
         swal({
-        title: 'Confirmation',
-        html: "Are you sure you want to proceed?",
+        title: 'Warning',
+        html: "Are you sure you want to continue?",
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: '#28A745',
@@ -248,12 +222,12 @@
                 success:function(response)
                 {
                     swal({
-                        title:"Success",
-                        text: "Thank You – your declaration has been logged",
-                        type: "success",
-                        confirmButtonColor: '#28A745',
-                        confirmButtonText: 'Ok',
-                        allowOutsideClick: false,
+                            title:"Success",
+                            text: "Thank You – your declaration has been logged",
+                            type: "success",
+                            confirmButtonColor: '#28A745',
+                            confirmButtonText: 'Ok',
+                            allowOutsideClick: false,
                     }).then(function() {
                         window.location.href = "<?php echo BASE_URL; ?>Covid/" +$("body").attr('company_id');
                     });
