@@ -83,7 +83,7 @@
 
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Lead ID #</label>
-                <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onkeypress="return isNumberKey(this, event);" required>
+                <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onchange="get_lead_dtls();" onkeypress="return isNumberKey(this, event);" required>
             </div>
 
             <div class="form-group col-md-6">
@@ -200,6 +200,31 @@
         });
 
 	});
+
+    function get_lead_dtls()
+    {
+        lead_id= $("#lead_id").val();
+        $.ajax({
+            url: "<?php echo BASE_URL; ?>Covid_declaration/get_lead_dtls",
+            method: "POST",
+            dataType: 'json',
+            data:{lead_id: lead_id},
+            success:function(data)
+            {
+               if(data.status)
+               {
+                    $("#name").val(data.data.name);
+                    $("#address").val(data.data.address);
+               }
+               else
+               {
+                    $("#name").val("N/A");
+                    $("#address").val("N/A");
+               }
+            }
+
+        });
+    }
 
     function ipLookUp () {
         $.ajax('http://ip-api.com/json')
