@@ -10,13 +10,10 @@ class Covid extends CI_Controller {
 		$this->load->model('Covid_model');
 	}
 
-	function _remap($comp_id) {
-        $this->index($comp_id);
-    }
-
-	public function index($comp_id)
+	public function index()
 	{
-		$data['company_id'] = $comp_id;
+		$data['company_id'] = $_GET['comp_id'];
+		$data['user_id'] = $_GET['user_id'];
 		$this->load->view('covid/cimos_mobile.php', $data);
 	}
 

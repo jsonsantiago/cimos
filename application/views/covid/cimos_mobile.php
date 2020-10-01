@@ -65,7 +65,7 @@
 	</style>
 </head>
 
-<body id="app-container" class="menu-hidden" company_id="<?php echo $company_id; ?>">
+<body id="app-container" class="menu-hidden" company_id="<?php echo $company_id; ?>" user_id="<?php echo $user_id; ?>">
     <nav class="navbar fixed-top">
         <a class="app-logo" href="#">
             <img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
@@ -241,7 +241,7 @@
                             confirmButtonText: 'Ok',
                             allowOutsideClick: false,
                     }).then(function() {
-                        window.location.href = "<?php echo BASE_URL; ?>Covid/" +$("body").attr('company_id');
+                        window.location.href = "<?php echo BASE_URL; ?>Covid/?comp_id="+$("body").attr('company_id') +"&user_id="+$("body").attr('user_id');
                     });
                     
                 }
