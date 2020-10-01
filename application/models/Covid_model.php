@@ -24,9 +24,8 @@ class Covid_model Extends CI_Model {
 		AND '$time' BETWEEN app.time_start AND app.time_end AND app.user_id= $user_id";
 
 		$query = $this->db->query($query_string);		
-		$result= $query->result_array();
+		$result= $query->row_array();
 
-		// var_dump($this->db->last_query());
 		return $result;
 		
 	}
