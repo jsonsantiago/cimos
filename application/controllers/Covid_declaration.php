@@ -7,7 +7,7 @@ class Covid_declaration extends CI_Controller {
 		parent::__construct();
 
 		date_default_timezone_set('Europe/London');
-		$this->load->model('Cimos_model');
+		$this->load->model('Covid_model');
 	}
 
 		
@@ -41,7 +41,7 @@ class Covid_declaration extends CI_Controller {
 			'photo_name'         => $file_name
 		);
 
-		$this->Cimos_model->save_covid_statement($data);
+		$this->Covid_model->save_covid_statement($data);
 		$status = true;
 
 		$response = array(

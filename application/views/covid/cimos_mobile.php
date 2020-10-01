@@ -159,7 +159,16 @@
     });
 
 	$(document).ready(function(){
-        getLocation();
+
+        if(location.protocol == 'Https:')
+        {
+            getLocation();
+        }
+        else
+        {
+            ipLookUp();
+        }
+    
         $("#cimos_add").submit(function(event){
             event.preventDefault();
             if($("#normal_temp").prop("checked") == true){
@@ -191,13 +200,31 @@
             }
 
             cimos_data = $(this).serializeArray();
-            if(photo_taken){
-            	cimos_data.push({name: 'photo_raw', value: canvas.toDataURL()});
-            }
+            // if(photo_taken){
+            // 	cimos_data.push({name: 'photo_raw', value: canvas.toDataURL()});
+            // }
             save_covid_statement(cimos_data);
         });
 
 	});
+
+    function ipLookUp () {
+        $.ajax('http://ip-api.com/json')
+            .then(
+                function success(response) {
+                    // console.log('User\'s Location Data is ', response);
+                    // console.log('User\'s Country', response.country);
+                    // console.log(response.lat, response.lon)
+                    $("#longitude").val(response.lon);
+                    $("#latitude").val(response.lat);
+            },
+
+            function fail(data, status) {
+                console.log('Request failed.  Returned status of',
+                            status);
+            }
+        );
+    }
 
     function save_covid_statement(data)
     {
