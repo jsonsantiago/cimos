@@ -20,9 +20,7 @@ class Covid_declaration extends CI_Controller {
 		$file_name = '';
 		if(isset($_FILES['photo_file'])){
 
-			$file_info = pathinfo($_FILES['photo_file']['name']);
-			$file_ext  = $file_info['extension'];
-			$file_name = uniqid().'.'.$file_ext;
+			$file_name = uniqid().'_'.$_FILES['photo_file']['name'];
 
 			$config['upload_path']   = realpath(APPPATH . '../uploads/covid/');
 			$config['allowed_types'] = 'png|jpg|jpeg|gif';
@@ -75,9 +73,9 @@ class Covid_declaration extends CI_Controller {
 		$response = array(
 			'status'  => $status,
 			'data'	 => $lead
-        );
+		);
 
-        echo json_encode($response);
+		echo json_encode($response);
 	}
 
 }
