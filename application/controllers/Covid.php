@@ -16,7 +16,8 @@ class Covid extends CI_Controller {
 		$data['user_id'] = $_GET['user_id'];
 
 		$data['lead_details'] = $this->Covid_model->get_lead_details($_GET['user_id']);
-		
+		$data['address'] = empty($data['lead_details']['address']) ? "" : nl2br($data['lead_details']['address']);
+
 		$this->load->view('covid/cimos_mobile.php', $data);
 	}
 

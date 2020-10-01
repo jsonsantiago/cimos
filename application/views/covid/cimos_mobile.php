@@ -93,7 +93,7 @@
 
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Client Address</label>
-                <textarea type="text" class="form-control" id="address" rows="4" name="address"><?php echo (empty($lead_details)) ? "N/A" : nl2br($lead_details['address']); ?></textarea>
+                <textarea type="text" class="form-control" id="address" rows="4" name="address"><?php echo (empty($address)) ? "N/A" : $address; ?></textarea>
             </div>
 
             <input type="hidden" class="form-control" id="latitude" name="latitude">
