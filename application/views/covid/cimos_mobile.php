@@ -173,7 +173,17 @@
 
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Lead ID #</label>
-                <input type="text" class="form-control" id="lead_id" name="lead_id" onkeypress="return isNumberKey(this, event);" required>
+                <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onkeypress="return isNumberKey(this, event);" required>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Client Name</label>
+                <input type="text" class="form-control" id="name" value="<?php echo (empty($lead_details)) ? "N/A" :$lead_details['title'] ." " .$lead_details['first_name'] ." " .$lead_details['last_name']; ?>" name="name">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">Client Address</label>
+                <textarea type="text" class="form-control" id="address" rows="4" name="address"><?php echo (empty($lead_details)) ? "N/A" : nl2br($lead_details['address']); ?></textarea>
             </div>
 
             <input type="hidden" class="form-control" id="latitude" name="latitude">
