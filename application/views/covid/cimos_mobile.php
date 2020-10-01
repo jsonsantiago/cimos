@@ -5,40 +5,129 @@
 	<title>Cimos- Covid Declaration</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>font/iconsmind/style.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>font/simple-line-icons/css/simple-line-icons.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>bootstrap/css/bootstrap.css">
 
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/custom.css" />
+    <!-- HELPERS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/animate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/backgrounds.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/boilerplate.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/border-radius.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/grid.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/page-transitions.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/spacing.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/typography.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/utils.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>helpers/colors.css">
 
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/bootstrap.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/fullcalendar.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/dataTables.bootstrap4.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/datatables.responsive.bootstrap4.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/select2.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/select2-bootstrap.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/perfect-scrollbar.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/owl.carousel.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/bootstrap-stars.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/nouislider.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/bootstrap-datepicker3.min.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/quill.snow.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/vendor/quill.bubble.css" />
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/dore.light.orange.min.css">
-	<link rel="stylesheet" href="<?php echo ASSETS_URL; ?>css/main.css" />
+    <!-- ELEMENTS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/badges.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/buttons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/content-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/dashboard-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/forms.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/images.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/info-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/invoice.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/loading-indicators.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/menus.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/panel-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/response-messages.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/responsive-tables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/ribbon.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/social-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/tables.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/tile-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>elements/timeline.css">
 
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/jquery-3.3.1.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/bootstrap.bundle.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/dore.script.js"></script>
+    <!-- ICONS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>icons/fontawesome/fontawesome.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>icons/linecons/linecons.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>icons/spinnericon/spinnericon.css">
+
+    <!-- WIDGETS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/accordion-ui/accordion.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/calendar/calendar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/carousel/carousel.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/charts/justgage/justgage.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/charts/morris/morris.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/charts/piegage/piegage.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/charts/xcharts/xcharts.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/chosen/chosen.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/colorpicker/colorpicker.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/datatable/datatable.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/datepicker/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/datepicker-ui/datepicker.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/dialog/dialog.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/dropdown/dropdown.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/dropzone/dropzone.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/file-input/fileinput.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/input-switch/inputswitch.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/input-switch/inputswitch-alt.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/ionrangeslider/ionrangeslider.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/jcrop/jcrop.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/jgrowl-notifications/jgrowl.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/loading-bar/loadingbar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/maps/vector-maps/vectormaps.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/markdown/markdown.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/modal/modal.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/multi-select/multiselect.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/multi-upload/fileupload.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/nestable/nestable.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/noty-notifications/noty.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/popover/popover.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/pretty-photo/prettyphoto.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/progressbar/progressbar.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/range-slider/rangeslider.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/slidebars/slidebars.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/slider-ui/slider.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/summernote-wysiwyg/summernote-wysiwyg.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/tabs-ui/tabs.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/theme-switcher/themeswitcher.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/timepicker/timepicker.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/tocify/tocify.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/tooltip/tooltip.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/touchspin/touchspin.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/uniform/uniform.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/wizard/wizard.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>widgets/xeditable/xeditable.css">
+
+    <!-- SNIPPETS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/chat.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/files-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/login-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/notification-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/progress-box.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/todo.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/user-profile.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>snippets/mobile-navigation.css">
+
+    <!-- APPLICATIONS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>applications/mailbox.css">
+
+    <!-- Admin theme -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>themes/admin/layout.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>themes/admin/color-schemes/default.css">
+
+    <!-- Components theme -->
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>themes/components/default.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo ASSETS_URL; ?>themes/components/border-radius.css">
+
+    <script type="text/javascript" src="<?php echo ASSETS_URL; ?>js-core/jquery-core.js"></script>
 
       <!-- Sweet Alert -->
     <script src="<?php echo ASSETS_URL; ?>css/dist/sweetalert.min.js"></script>
     <script src="<?php echo ASSETS_URL; ?>css/dist/sweetalert2.all.min.js"></script>
 
-
 	<style type="text/css">
-        .navbar {
-            height: 80px;
-            padding-top: 0;
+        #page-header{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: 0 0 6px #DDD;
+        }
+        main {
+            padding-top: 100px;
         }
         .app-logo img{
             position: absolute;
@@ -48,7 +137,7 @@
             left: 0;
             right: 0;
             text-align: center;
-            z-index: -1;
+            z-index: 100;
             height: 40px;
         }
         #photo_preview {
@@ -65,14 +154,15 @@
 	</style>
 </head>
 
-<body id="app-container" class="menu-hidden" company_id="<?php echo $company_id; ?>" user_id="<?php echo $user_id; ?>">
-    <nav class="navbar fixed-top">
+<body id="app-container" company_id="<?php echo $company_id; ?>" user_id="<?php echo $user_id; ?>">
+    <div id="page-header" class="border-bottom shadow-sm p-3 mb-5 bg-white rounded">
         <a class="app-logo" href="#">
             <img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
         </a>
-    </nav>
+    </div>
+
     <main>
-	<div class="col-12 mt-3 mb-3 card ">
+	<div class="panel">
         <form id="cimos_add">
     		<div class="position-relative">
                 <img id="photo_preview" src="<?php echo  ASSETS_URL.'img/default_img.png' ?>" class="img-thumbnail border mx-auto d-block m-3">
@@ -90,7 +180,7 @@
             <input type="hidden" class="form-control" id="longitude" name="longitude">
 
             <h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
-            <div class="form-group mb-2 col-sm-12" >
+
                 <div class="custom-control custom-checkbox mb-2 ">
                     <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
                     <label class="custom-control-label " for="normal_temp"> I confirm that I have taken my own temperature and that it is at or below…</label>
@@ -111,14 +201,8 @@
                     <label class="custom-control-label " for="with_PPE"> I confirm that I have the required PPE mask, hand sanitiser, my own water and that I will confirm to the client of our Covid 19 procedures upon arrival</label>
                 </div>
 
-               
-		</div>
-   
-
-		<button type="submit" class="btn btn-success mb-4 mt-3 col-12">Submit</button>
+		        <button type="submit" class="btn btn-success mb-4 mt-3 col-12">Submit</button>
         </form>
-
-
 	</div>
 
 	</main>
@@ -368,24 +452,6 @@
     }
 
 	</script>
-
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/Chart.bundle.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/chartjs-plugin-datalabels.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/moment.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/fullcalendar.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/datatables.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/dataTables.pageResize.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/perfect-scrollbar.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/owl.carousel.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/progressbar.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/jquery.barrating.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/select2.full.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/nouislider.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/bootstrap-datepicker.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/Sortable.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/bootstrap-notify.min.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/vendor/ckeditor5-build-classic/ckeditor.js"></script>
-	<script src="<?php echo ASSETS_URL; ?>js/scripts.js"></script>
 </body>
 
 </html>

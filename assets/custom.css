@@ -1,0 +1,33 @@
+.width-15 {
+	width: 15% !important;
+}
+.width-25 {
+	width: 25% !important;
+}
+.width-80 {
+	width: 80% !important;
+}
+.width-90 {
+	width: 90% !important;
+}
+.valign-middle {
+	vertical-align: middle !important;
+}
+.display-inline {
+	display: inline !important;
+}
+.icon-red {
+	color: #e74c3c !important;
+}
+.icon-green {
+	color: #2ecc71 !important;
+}
+audio { 
+	display: block;
+	width: 100%; 
+}
+.btn-white
+{
+	background-color: #fff !important;
+	border: 1px solid #cacaca !important;
+}
