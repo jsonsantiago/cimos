@@ -7,7 +7,7 @@ class Covid_declaration extends CI_Controller {
 		parent::__construct();
 
 		date_default_timezone_set('Europe/London');
-		$this->load->model('Cimos_model');
+		$this->load->model('Covid_model');
 	}
 
 		
@@ -18,15 +18,18 @@ class Covid_declaration extends CI_Controller {
 
 		//Upload photo to server
 		$file_name = '';
-		if($this->input->post('photo_raw')){
-			$photo     = $this->input->post('photo_raw');
-			$photo     = str_replace('data:image/png;base64,', '', $photo);
-			$photo     = str_replace(' ', '+', $photo);
-			$photo_raw = base64_decode($photo);
-			$file_name = uniqid(). '.png';
+		if(isset($_FILES['photo_file'])){
 
-			$upload_file_path = APPPATH . '../upload_files/covid/'. $file_name;
-			file_put_contents($upload_file_path, $photo_raw);
+			$file_info = pathinfo($_FILES['photo_file']['name']);
+			$file_ext  = $file_info['extension'];
+			$file_name = uniqid().'.'.$file_ext;
+
+			$config['upload_path']   = realpath(APPPATH . '../uploads/covid/');
+			$config['allowed_types'] = 'png|jpg|jpeg|gif';
+			$config['file_name']     = $file_name;
+
+			$this->load->library('upload', $config);
+			$upload_status = $this->upload->do_upload('photo_file');
 		}
 
 		$data = array(
@@ -41,7 +44,7 @@ class Covid_declaration extends CI_Controller {
 			'photo_name'         => $file_name
 		);
 
-		$this->Cimos_model->save_covid_statement($data);
+		$this->Covid_model->save_covid_statement($data);
 		$status = true;
 
 		$response = array(

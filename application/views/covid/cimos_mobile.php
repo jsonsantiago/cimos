@@ -51,14 +51,11 @@
             z-index: -1;
             height: 40px;
         }
-		canvas {
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-image: url("../../../assets/img/default_img.png");
-		}
-		video {
-		}
+        #photo_preview {
+            width: auto;
+            height: auto;
+            max-height: 300px;
+        }
 		.modal-dialog {
 			height: 100%;
 		}
@@ -76,14 +73,14 @@
     </nav>
     <main>
 	<div class="col-12 mt-3 mb-3 card ">
-		<canvas id="canvas" class="border mt-3" width=320 height=320>
-
-		</canvas>
-        <label class="btn btn-info mb-4 mt-3 btn-upload" for="photo_file" title="Upload image file">
-            <input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
-        </label>
-
         <form id="cimos_add">
+    		<div class="position-relative">
+                <img id="photo_preview" src="<?php echo  ASSETS_URL.'img/default_img.png' ?>" class="img-thumbnail border mx-auto d-block m-3">
+            </div>
+            <label class="btn btn-info mb-4 btn-upload col-12" for="photo_file" title="Upload image file">
+                <input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
+            </label>
+
             <div class="form-group col-md-6">
                 <label for="inputEmail4">Lead ID #</label>
                 <input type="text" class="form-control" id="lead_id" name="lead_id" onkeypress="return isNumberKey(this, event);" required>
@@ -124,19 +121,6 @@
 
 	</div>
 
-
-<!-- 	<div id="capture_modal" class="modal fade align-self-center show" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content modal-overflow">
-				<div class="modal-body">
-					<video id="player" class="border mt-3" width="100%" height="100%" autoplay ></video>
-
-					<button type="button" class="btn col-12 btn-info mx-auto d-block" id="capture">Capture</button>
-					<button type="button" class="btn col-12 btn-dark mx-auto d-block mt-2" data-dismiss="modal" id="cancel">Cancel</button>
-				</div>  
-			</div>
-		</div>
-	</div> -->
 	</main>
 
 	<script type="text/javascript">
@@ -147,7 +131,7 @@
             var reader = new FileReader();
             
             reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
+                $('#photo_preview').attr('src', e.target.result);
             }
             
             reader.readAsDataURL(input.files[0]);
@@ -190,10 +174,9 @@
                 $("#no_symptoms").val(0);
             }
 
-            cimos_data = $(this).serializeArray();
-            if(photo_taken){
-            	cimos_data.push({name: 'photo_raw', value: canvas.toDataURL()});
-            }
+            cimos_data = new FormData($('#cimos_add')[0]);
+
+            //console.log(form_data);
             save_covid_statement(cimos_data);
         });
 
@@ -219,6 +202,8 @@
                 method: "POST",
                 dataType: 'json',
                 data: data,
+                processData: false,
+                contentType: false,
                 success:function(response)
                 {
                     swal({
