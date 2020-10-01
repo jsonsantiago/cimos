@@ -231,6 +231,17 @@
                 data: data,
                 processData: false,
                 contentType: false,
+                beforeSend: function() {
+                    swal({
+                        title: 'Saving covid statement',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false,
+                        onOpen: () => {
+                            swal.showLoading()
+                        }
+                    })
+                },
                 success:function(response)
                 {
                     swal({
