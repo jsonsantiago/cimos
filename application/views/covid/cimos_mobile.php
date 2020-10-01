@@ -121,13 +121,11 @@
 
 	<style type="text/css">
         #page-header{
-            position: fixed;
             top: 0;
-            width: 100%;
             box-shadow: 0 0 6px #DDD;
         }
         main {
-            padding-top: 100px;
+            padding: 15px 0px;
         }
         .app-logo img{
             position: absolute;
@@ -143,6 +141,8 @@
         #photo_preview {
             width: auto;
             height: auto;
+            margin: 0 auto;
+            margin-bottom: 10px;
             max-height: 300px;
         }
 		.modal-dialog {
@@ -151,10 +151,21 @@
 		.modal-content {
 			height: auto;
 		}
+        .panel {
+            margin: 0 10px;
+        }
+        .col-centered {
+            margin: 0 auto;
+            text-align: center;
+        }
+        .check {
+            margin: 0px;
+            padding: 0px;
+        }
 	</style>
 </head>
 
-<body id="app-container" company_id="<?php echo $company_id; ?>" user_id="<?php echo $user_id; ?>">
+<body id="sb-site" company_id="<?php echo $company_id; ?>" user_id="<?php echo $user_id; ?>">
     <div id="page-header" class="border-bottom shadow-sm p-3 mb-5 bg-white rounded">
         <a class="app-logo" href="#">
             <img class="img-fluid" src="<?php echo ($company_id == 1) ? ASSETS_URL.'img/ymd-logo.png' : ASSETS_URL.'img/access-equity-release-logo.png'; ?>" onerror="this.onerror=null; this.src='<?php echo ASSETS_URL; ?>img/default_logo.png'">
@@ -163,56 +174,79 @@
 
     <main>
 	<div class="panel">
-        <form id="cimos_add">
-    		<div class="position-relative">
-                <img id="photo_preview" src="<?php echo  ASSETS_URL.'img/default_img.png' ?>" class="img-thumbnail border mx-auto d-block m-3">
-            </div>
-            <label class="btn btn-info mb-4 btn-upload col-12" for="photo_file" title="Upload image file">
-                <input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
-            </label>
+        <div class="panel-body">
+            <form class="form-horizontal" id="cimos_add">
+                <input type="hidden" class="form-control" id="latitude" name="latitude">
+                <input type="hidden" class="form-control" id="longitude" name="longitude">
+                <div class="form-group col-centered">
+                    <div class="col-6">
+                        <img id="photo_preview" src="<?php echo  ASSETS_URL.'img/default_img.png' ?>" class="img-thumbnail">
+                    </div>
 
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Lead ID #</label>
-                <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onkeypress="return isNumberKey(this, event);" required>
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Client Name</label>
-                <input type="text" class="form-control" id="name" value="<?php echo (empty($lead_details)) ? "N/A" :$lead_details['title'] ." " .$lead_details['first_name'] ." " .$lead_details['last_name']; ?>" name="name">
-            </div>
-
-            <div class="form-group col-md-6">
-                <label for="inputEmail4">Client Address</label>
-                <textarea type="text" class="form-control" id="address" rows="4" name="address"><?php echo (empty($lead_details)) ? "N/A" : nl2br($lead_details['address']); ?></textarea>
-            </div>
-
-            <input type="hidden" class="form-control" id="latitude" name="latitude">
-            <input type="hidden" class="form-control" id="longitude" name="longitude">
-
-            <h5 class="col-sm-6 col-form-label">COVID STATEMENT</h5>
-
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="normal_temp" id="normal_temp">
-                    <label class="custom-control-label " for="normal_temp"> I confirm that I have taken my own temperature and that it is at or below…</label>
+                    <label class="btn btn-info btn-upload col-12 col-centered" for="photo_file" title="Upload image file">
+                        <input type="file" class="sr-only" id="photo_file" name="photo_file" accept="image/*">Take Photo
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Lead ID #</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onkeypress="return isNumberKey(this, event);" required>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Client Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="name" value="<?php echo (empty($lead_details)) ? "N/A" :$lead_details['title'] ." " .$lead_details['first_name'] ." " .$lead_details['last_name']; ?>" name="name" readonly>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Client Address</label>
+                    <div class="col-sm-6">
+                        <textarea class="form-control" id="address" rows="4" name="address" readonly><?php echo (empty($lead_details)) ? "N/A" : nl2br($lead_details['address']); ?></textarea>
+                    </div>
+                </div>
+                <div class="form-group check">
+                    <label class="col-sm-4 control-label">COVID STATEMENT</label>
+                    <div class="col-sm-6 checkbox">
+                        <label>
+                            <input type="checkbox" name="normal_temp" id="normal_temp">I confirm that I have taken my own temperature and that it is at or below…
+                        </label>
+                    </div>
+                </div>  
+                <div class="form-group check">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6 checkbox">
+                        <label>
+                            <input type="checkbox" name="no_symptoms" id="no_symptoms" >I can confirm that I am currently not experiencing any COVID symptoms, fever, cough, loss of smell or taste…
+                        </label>
+                    </div>
+                </div>  
+                <div class="form-group check">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6 checkbox">
+                        <label>
+                            <input type="checkbox" name="no_contact_with_positive" id="no_contact_with_positive">I can confirm that I have not been in contact with anyone who is currently suffering from those symptoms
+                        </label>
+                    </div>
+                </div> 
+                <div class="form-group check">
+                    <label class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6 checkbox">
+                        <label>
+                            <input type="checkbox" name="with_PPE" id="with_PPE">I confirm that I have the required PPE mask, hand sanitiser, my own water and that I will confirm to the client of our Covid 19 procedures upon arrival
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group"></div>
+                <div class="form-group"></div>
+                <div class="form-group">
+                    <div class="col-sm-12 center-div">                      
+                        <button type="submit" class="btn btn-success col-12">Submit</button>
+                    </div>  
                 </div>
 
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="no_symptoms" id="no_symptoms" >
-                    <label class="custom-control-label " for="no_symptoms"> I can confirm that I am currently not experiencing any COVID symptoms, fever, cough, loss of smell or taste….</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="no_contact_with_positive" id="no_contact_with_positive">
-                    <label class="custom-control-label " for="no_contact_with_positive"> I can confirm that I have not been in contact with anyone who is currently suffering from those symptoms</label>
-                </div>
-
-                <div class="custom-control custom-checkbox mb-2 ">
-                    <input type="checkbox" class="custom-control-input" name="with_PPE" id="with_PPE">
-                    <label class="custom-control-label " for="with_PPE"> I confirm that I have the required PPE mask, hand sanitiser, my own water and that I will confirm to the client of our Covid 19 procedures upon arrival</label>
-                </div>
-
-		        <button type="submit" class="btn btn-success mb-4 mt-3 col-12">Submit</button>
-        </form>
+            </form>
+        </div>
 	</div>
 
 	</main>
