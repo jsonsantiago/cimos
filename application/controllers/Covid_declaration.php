@@ -54,4 +54,30 @@ class Covid_declaration extends CI_Controller {
 		echo json_encode($response);
 	}
 
+	public function get_lead_dtls()
+	{
+		$data= $this->Covid_model->get_lead_dtls($this->input->post('lead_id'));
+		$lead= array();
+
+		if(!empty($data))
+		{
+			$status= true;
+			$lead= array(
+				'name' => $data['title'] ." ". $data['first_name']." ". $data['last_name'],
+				'address' => nl2br($data['address'])
+			);
+		}
+		else
+		{
+			$status= false;
+		}
+
+		$response = array(
+			'status'  => $status,
+			'data'	 => $lead
+        );
+
+        echo json_encode($response);
+	}
+
 }

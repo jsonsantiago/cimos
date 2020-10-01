@@ -29,5 +29,15 @@ class Covid_model Extends CI_Model {
 		return $result;
 		
 	}
+
+	public function get_lead_dtls($lid)
+	{
+		$this->db->select('*')
+			->from('leads')
+			->where('l_id', $lid);
+		$query = $this->db->get();
+		return $query->row_array();
+		
+	}
 }
 ?>

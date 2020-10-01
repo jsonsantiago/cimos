@@ -190,7 +190,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Lead ID #</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onkeypress="return isNumberKey(this, event);" required>
+                        <input type="text" class="form-control" id="lead_id" name="lead_id" value="<?php echo (empty($lead_details)) ? "" :$lead_details['l_id']; ?>" onchange="get_lead_dtls();" onkeypress="return isNumberKey(this, event);" required>
                     </div>
                 </div> 
                 <div class="form-group">
@@ -202,7 +202,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Client Address</label>
                     <div class="col-sm-6">
-                        <textarea class="form-control" id="address" rows="4" name="address" readonly><?php echo (empty($lead_details)) ? "N/A" : nl2br($lead_details['address']); ?></textarea>
+                        <textarea class="form-control" id="address" rows="4" name="address" readonly><?php echo (empty($address)) ? "N/A" : $address; ?></textarea>
                     </div>
                 </div>
                 <div class="form-group check">
@@ -318,6 +318,31 @@
         });
 
 	});
+
+    function get_lead_dtls()
+    {
+        lead_id= $("#lead_id").val();
+        $.ajax({
+            url: "<?php echo BASE_URL; ?>Covid_declaration/get_lead_dtls",
+            method: "POST",
+            dataType: 'json',
+            data:{lead_id: lead_id},
+            success:function(data)
+            {
+               if(data.status)
+               {
+                    $("#name").val(data.data.name);
+                    $("#address").val(data.data.address);
+               }
+               else
+               {
+                    $("#name").val("N/A");
+                    $("#address").val("N/A");
+               }
+            }
+
+        });
+    }
 
     function ipLookUp () {
         $.ajax('http://ip-api.com/json')
