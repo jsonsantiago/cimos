@@ -3,7 +3,7 @@
 class Covid_model Extends CI_Model {
 	public function __construct()
 	{
-		$this->load->database();
+		
 		date_default_timezone_set('Europe/London');
 	}
 
@@ -15,6 +15,8 @@ class Covid_model Extends CI_Model {
 
 	public function get_lead_details($user_id)
 	{
+		$aer = $this->load->database("aer", TRUE);
+		
 		$date= date('Y-m-d');
 		$time= date('H:i:s');
 
@@ -23,7 +25,7 @@ class Covid_model Extends CI_Model {
 		AND app.date= '$date' 
 		AND '$time' BETWEEN app.time_start AND app.time_end AND app.user_id= $user_id";
 
-		$query = $this->db->query($query_string);		
+		$query = $aer->query($query_string);		
 		$result= $query->row_array();
 
 		return $result;
@@ -32,10 +34,12 @@ class Covid_model Extends CI_Model {
 
 	public function get_lead_dtls($lid)
 	{
-		$this->db->select('*')
+		$aer = $this->load->database("aer", TRUE);
+		$aer= $this->load->database();
+		$aer->select('*')
 			->from('leads')
 			->where('l_id', $lid);
-		$query = $this->db->get();
+		$query = $aer->get();
 		return $query->row_array();
 		
 	}
