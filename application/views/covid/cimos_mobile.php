@@ -104,8 +104,8 @@
 		<div class="panel">
 			<div class="panel-body">
 				<form class="form-horizontal" id="cimos_add">
-					<input type="text" class="form-control" id="latitude" name="latitude">
-					<input type="text" class="form-control" id="longitude" name="longitude">
+					<input type="hidden" class="form-control" id="latitude" name="latitude">
+					<input type="hidden" class="form-control" id="longitude" name="longitude">
 
 					<div class="form-group col-centered">
 						<div class="col-6">
@@ -268,6 +268,23 @@ function get_lead_dtls()
 	});
 }
 
+<<<<<<< HEAD
+=======
+function ipLookUp () {
+	$.ajax('http://ip-api.com/json')
+	.then(
+		function success(response) {
+			$("#longitude").val(response.lon);
+			$("#latitude").val(response.lat);
+		},
+
+		function fail(data, status) {
+			console.log('Request failed.  Returned status of',status);
+		}
+	);
+}
+
+>>>>>>> 144201054953fc5d54c6577a2ff335e12cd89295
 function save_covid_statement(data)
 {
 	swal({
